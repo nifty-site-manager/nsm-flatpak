@@ -39,10 +39,10 @@ Quoted.o: Quoted.cpp Quoted.h
 
 install:
 	chmod 755 nsm
-	mv nsm $(DESTDIR)
+	mv nsm /usr/local/bin
 
 uninstall:
-	rm $(DESTDIR)/nsm
+	rm /usr/local/bin/nsm
 
 clean:
 	rm -f $(objects)
