@@ -16,7 +16,7 @@
                 {
 					"type": "archive",
 					"url": "https://github.com/nifty-site-manager/nsm-flatpak/raw/master/nsm.tar.xz",
-					"sha256": "e51bfbc95ccf56bc3eaec6fef1c8ac11e2ec6cb067edaa7093fbb66c89c53a61"
+					"sha256": "b82b8a9ba8a2e8e084a1ef658554cb7accd00cb8821f32263c6655f4be9b291d"
                 }
             ]
         }
