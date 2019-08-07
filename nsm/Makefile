@@ -38,8 +38,7 @@ Quoted.o: Quoted.cpp Quoted.h
 	$(CC) $(CXXFLAGS) -c -o $@ $<
 
 install:
-	chmod 755 nsm
-	cp nsm /app/bin
+	install -D nsm /app/bin/nsm
 
 uninstall:
 	rm /app/bin/nsm
