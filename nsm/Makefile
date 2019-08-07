@@ -39,6 +39,9 @@ Quoted.o: Quoted.cpp Quoted.h
 
 install:
 	install -D nsm /app/bin/nsm
+	install -D org.nifty-site-manager.nsm.appdata.xml /app/org.nifty-site-manager.nsm.appdata.xml
+	install -D org.nifty-site-manager.nsm.desktop /app/org.nifty-site-manager.nsm.desktop
+	install -D org.nifty-site-manager.nsm.png /app/org.nifty-site-manager.nsm.png
 
 uninstall:
 	rm /app/bin/nsm
