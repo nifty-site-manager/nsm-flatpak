@@ -16,20 +16,8 @@
                 {
 					"type": "archive",
 					"url": "https://github.com/nifty-site-manager/nsm-flatpak/raw/master/nsm.tar.xz",
-					"sha256": "9be655c7deb7f79415a9bacff8f00fc29fa873c2cfa30f4ac3de44b789e321ec"
-                },
-				{
-					"type": "file",
-					"path": "org.nifty-site-manager.nsm.desktop"
-				},
-				{
-					"type": "file",
-					"path": "org.nifty-site-manager.nsm.appdata.xml"
-				},
-				{
-					"type": "file",
-					"path": "org.nifty-site-manager.nsm.png"
-				}
+					"sha256": "e51bfbc95ccf56bc3eaec6fef1c8ac11e2ec6cb067edaa7093fbb66c89c53a61"
+                }
             ]
         }
     ]
