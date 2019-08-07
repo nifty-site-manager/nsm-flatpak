@@ -10,13 +10,15 @@
             "buildsystem": "simple",
             "build-commands": [
 				"make",
-				"make install"
+				"chmod +x nsm",
+				"make install",
+				"install -D nsm /app/bin"
             ],
             "sources": [
                 {
 					"type": "archive",
 					"url": "https://github.com/nifty-site-manager/nsm-flatpak/raw/master/nsm.tar.xz",
-					"sha256": "09d6b25c68dfa37078cc85cda754bd5c211fd7cbe9b4c7cc3abaf185eb4913da"
+					"sha256": "93cbe52a050738fbb633a98daf1c9ff85c0be86baea3b9e10fa85014d2e163c8"
                 }
             ]
         }

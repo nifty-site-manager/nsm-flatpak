@@ -39,10 +39,10 @@ Quoted.o: Quoted.cpp Quoted.h
 
 install:
 	chmod 755 nsm
-	cp nsm /app/bin
+	cp nsm /app
 
 uninstall:
-	rm /app/bin/nsm
+	rm /app/nsm
 
 clean:
 	rm -f $(objects)
