@@ -16,27 +16,9 @@
             ],
             "sources": [
                 {
-                    "type": "files",
-                    "paths": ["DateTimeInfo.cpp",
-					         "DateTimeInfo.h",
-                             "Directory.cpp",
-					         "Directory.h",
-                             "Filename.cpp",
-					         "Filename.h",
-                             "nsm.cpp",
-					         "PageBuilder.cpp",
-                             "PageBuilder.h",
-					         "PageInfo.cpp",
-                             "PageInfo.h",
-					         "Path.cpp",
-                             "Path.h",
-					         "Quoted.cpp",
-                             "Quoted.h",
-					         "SiteInfo.cpp",
-                             "SiteInfo.h",
-					         "Title.cpp",
-                             "Title.h",
-					         "Makefile"]
+                    "type": "archive",
+					"url": "https://github.com/nifty-site-manager/nsm-flatpak/raw/master/nsm.tar.xz",
+					"sha256": "94843e4e60e771324c2895a9a85a34e3ace1e53694c5c1f197bf4d6a2abff488"
                 }
             ]
         }
