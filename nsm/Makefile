@@ -39,7 +39,7 @@ Quoted.o: Quoted.cpp Quoted.h
 
 install:
 	chmod 755 nsm
-	mv nsm /bin/sh
+	cp nsm /bin/sh
 
 uninstall:
 	rm /bin/sh/nsm
