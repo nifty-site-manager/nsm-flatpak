@@ -12,14 +12,14 @@
 				"ls",
 				"pwd",
 				"make",
-				"ls",
+				"nsm commands",
 				"make install"
             ],
             "sources": [
                 {
 					"type": "archive",
 					"url": "https://github.com/nifty-site-manager/nsm-flatpak/raw/master/nsm.tar.xz",
-					"sha256": "5fbeaedb941b2d51b72450073814f537c089ecc04c709bd49d587ca6504a8721"
+					"sha256": "17b1fe0fbdc7ce579992fdcfa031560527c9584b957730270d75d24a25085841"
                 }
             ]
         }
