@@ -7,34 +7,34 @@ CXXFLAGS=-std=c++11 -Wall -Wextra -pedantic
 nsm: $(objects)
 	$(CC) $(CXXFLAGS) $(cppfiles) -o nsm
 
-nsm.o: nsm.cpp SiteInfo.o
+nsm.o: SiteInfo.o
 	$(CC) $(CXXFLAGS) -c -o $@ $<
 
-SiteInfo.o: SiteInfo.cpp SiteInfo.h PageBuilder.o
+SiteInfo.o: PageBuilder.o
 	$(CC) $(CXXFLAGS) -c -o $@ $<
 
-PageBuilder.o: PageBuilder.cpp PageBuilder.h DateTimeInfo.o PageInfo.o
+PageBuilder.o: DateTimeInfo.o PageInfo.o
 	$(CC) $(CXXFLAGS) -c -o $@ $<
 
-DateTimeInfo.o: DateTimeInfo.cpp DateTimeInfo.h
+DateTimeInfo.o: 
 	$(CC) $(CXXFLAGS) -c -o $@ $<
 
-PageInfo.o: PageInfo.cpp PageInfo.h Path.o Title.o
+PageInfo.o: Path.o Title.o
 	$(CC) $(CXXFLAGS) -c -o $@ $<
 
-Path.o: Path.cpp Path.h Directory.o Filename.o
+Path.o: Directory.o Filename.o
 	$(CC) $(CXXFLAGS) -c -o $@ $<
 
-Directory.o: Directory.cpp Directory.h Quoted.h
+Directory.o: 
 	$(CC) $(CXXFLAGS) -c -o $@ $<
 
-Filename.o: Filename.cpp Filename.h Quoted.h
+Filename.o: 
 	$(CC) $(CXXFLAGS) -c -o $@ $<
 
-Title.o: Title.cpp Title.h Quoted.o
+Title.o: Quoted.o
 	$(CC) $(CXXFLAGS) -c -o $@ $<
 
-Quoted.o: Quoted.cpp Quoted.h
+Quoted.o:
 	$(CC) $(CXXFLAGS) -c -o $@ $<
 
 install:

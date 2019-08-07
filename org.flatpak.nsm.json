@@ -1,0 +1,42 @@
+{
+    "app-id": "org.flatpak.nsm",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "nsm",
+    "modules": [
+        {
+            "name": "nsm",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make",
+				"make install"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "DateTimeInfo.cpp",
+					"path": "DateTimeInfo.h",
+                    "path": "Directory.cpp",
+					"path": "Directory.h",
+                    "path": "Filename.cpp",
+					"path": "Filename.h",
+                    "path": "nsm.cpp",
+					"path": "PageBuilder.cpp",
+                    "path": "PageBuilder.h",
+					"path": "PageInfo.cpp",
+                    "path": "PageInfo.h",
+					"path": "Path.cpp",
+                    "path": "Path.h",
+					"path": "Quoted.cpp",
+                    "path": "Quoted.h",
+					"path": "SiteInfo.cpp",
+                    "path": "SiteInfo.h",
+					"path": "Title.cpp",
+                    "path": "Title.h",
+					"path": "Makefile"
+                }
+            ]
+        }
+    ]
+}

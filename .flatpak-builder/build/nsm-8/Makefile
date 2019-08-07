@@ -4,6 +4,8 @@ cppfiles=nsm.cpp DateTimeInfo.cpp Directory.cpp Filename.cpp PageBuilder.cpp Pag
 CC=g++
 CXXFLAGS=-std=c++11 -Wall -Wextra -pedantic
 
+nsm.cpp:
+
 nsm: $(objects)
 	$(CC) $(CXXFLAGS) $(cppfiles) -o nsm
 
