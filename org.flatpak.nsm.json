@@ -9,8 +9,6 @@
             "name": "nsm",
             "buildsystem": "simple",
             "build-commands": [
-				"ls",
-				"pwd",
 				"make",
 				"make install"
             ],
