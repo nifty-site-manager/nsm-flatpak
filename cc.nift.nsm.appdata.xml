@@ -7,7 +7,7 @@
   <content_rating type="oars-1.1" />
 
   <name>Nifty Site Manager</name>
-  <summary>dynamic and static site generator</summary>
+  <summary>Dynamic and static site generator</summary>
   <description>
     <p>
        Nifty site manager (nsm) is a cross-platform open source git-like and LaTeX-like command-line dynamic and static site generator. 
