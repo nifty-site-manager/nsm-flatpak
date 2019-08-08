@@ -1,5 +1,5 @@
 {
-    "app-id": "org.flatpak.nsm",
+    "app-id": "cc.nift.nsm",
     "runtime": "org.freedesktop.Platform",
     "runtime-version": "18.08",
     "sdk": "org.freedesktop.Sdk",
