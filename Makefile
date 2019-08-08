@@ -42,12 +42,12 @@ Quoted.o: Quoted.cpp Quoted.h
 
 install:
 	install -D nsm /app/bin/nsm
-	install -Dm644 org.nifty-site-manager.nsm.appdata.xml $(prefix)/$(datadir)/appdata/org.nifty-site-manager.nsm.appdata.xml
-	install -Dm644 org.nifty-site-manager.nsm.desktop $(prefix)/$(datadir)/desktop/org.nifty-site-manager.nsm.desktop
-	install -Dm644 org.nifty-site-manager.nsm64.png $(prefix)/$(datadir)/icons/hicolor/64x64/apps/org.nifty-site-manager.nsm.png
-	install -Dm644 org.nifty-site-manager.nsm128.png $(prefix)/$(datadir)/icons/hicolor/128x128/apps/org.nifty-site-manager.nsm.png
-	install -Dm644 org.nifty-site-manager.nsm256.png $(prefix)/$(datadir)/icons/hicolor/256x256/apps/org.nifty-site-manager.nsm.png
-	install -Dm644 org.nifty-site-manager.nsm512.png $(prefix)/$(datadir)/icons/hicolor/512x512/apps/org.nifty-site-manager.nsm.png
+	install -Dm644 cc.nift.nsm.appdata.xml $(prefix)/$(datadir)/appdata/org.nifty-site-manager.nsm.appdata.xml
+	install -Dm644 cc.nift.nsm.desktop $(prefix)/$(datadir)/desktop/org.nifty-site-manager.nsm.desktop
+	install -Dm644 cc.nift.nsm64.png $(prefix)/$(datadir)/icons/hicolor/64x64/apps/org.nifty-site-manager.nsm.png
+	install -Dm644 cc.nift.nsm128.png $(prefix)/$(datadir)/icons/hicolor/128x128/apps/org.nifty-site-manager.nsm.png
+	install -Dm644 cc.nift.nsm256.png $(prefix)/$(datadir)/icons/hicolor/256x256/apps/org.nifty-site-manager.nsm.png
+	install -Dm644 cc.nift.nsm512.png $(prefix)/$(datadir)/icons/hicolor/512x512/apps/org.nifty-site-manager.nsm.png
 
 uninstall:
 	rm /app/bin/nsm
