@@ -2,9 +2,9 @@
 Version=v1.0
 Type=Application
 Terminal=true
-Name=nsm
-TryExec=nsm
+Name=nifty site manager
 Exec=nsm
-Icon=org.nifty-site-manager.nsm.png
+Icon=cc.nift.nsm
 Categories=ConsoleOnly;DeveloperTools;Productivity;Utilities;
 
+Name[en_AU]=cc.nift.nsm.desktop

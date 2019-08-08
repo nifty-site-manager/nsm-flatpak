@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2019 Nick Ham -->
 <component type="console-application">
-  <id>org.nifty-site-manager.nsm</id>
+  <id>cc.nift.nsm</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
   <content_rating type="oars-1.1" />
@@ -26,7 +26,7 @@
   <developer_name>Nick Ham</developer_name>
   <update_contact>contact_at_n-ham.com</update_contact>
 
-  <launchable type="desktop-id">org.nifty-site-manager.nsm.desktop</launchable>
+  <launchable type="desktop-id">cc.nift.nsm.desktop</launchable>
   <releases>
     <release version="1.0" date="2019-08-07" />
   </releases>
