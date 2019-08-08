@@ -22,7 +22,7 @@
 
   <url type="homepage">https://nift.cc</url>
   <url type="bugtracker">https://github.com/nifty-site-manager/nsm-flatpak/issues</url>
-  <url type="donate">https://nift.cc/support.html</url>
+  <url type="donations">https://nift.cc/support.html</url>
 
   <developer_name>Nick Ham</developer_name>
   <update_contact>contact_at_n-ham.com</update_contact>
