@@ -7,11 +7,7 @@
     "modules": [
         {
             "name": "nsm",
-            "buildsystem": "simple",
-            "build-commands": [
-				"make",
-				"make install"
-            ],
+            "no-autogen": true,
             "sources": [
                 {
 					"type": "git",
