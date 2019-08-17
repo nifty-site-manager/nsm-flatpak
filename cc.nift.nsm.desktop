@@ -1,8 +1,8 @@
 [Desktop Entry]
-Version=v1.0
+Version=v1.1
 Type=Application
 Terminal=true
-Name=nifty site manager
+Name=Nift
 Exec=nsm
 Icon=cc.nift.nsm
 Categories=ConsoleOnly;DeveloperTools;Productivity;Utilities;

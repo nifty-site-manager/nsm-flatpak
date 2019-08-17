@@ -12,7 +12,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/nifty-site-manager/nsm-flatpak.git",
-                    "tag": "v1.0",
+                    "tag": "v1.1",
                     "commit": "add_commit_here"
                 }
             ]
