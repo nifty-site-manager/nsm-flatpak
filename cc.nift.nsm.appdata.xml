@@ -6,11 +6,11 @@
   <project_license>MIT</project_license>
   <content_rating type="oars-1.1" />
 
-  <name>Nifty Site Manager</name>
+  <name>Nift</name>
   <summary>Dynamic and static site generator</summary>
   <description>
     <p>
-       Nifty site manager (nsm) is a cross-platform open source git-like and LaTeX-like command-line dynamic and static site generator. 
+       Nift (aka nsm) is a cross-platform open source git-like and LaTeX-like command-line dynamic and static site generator. 
     </p>
   </description>
 
@@ -29,6 +29,7 @@
 
   <launchable type="desktop-id">cc.nift.nsm.desktop</launchable>
   <releases>
+	<release version="1.2" date="2019-08-20" />
 	<release version="1.1" date="2019-08-17" />
     <release version="1.0" date="2019-08-07" />
   </releases>
