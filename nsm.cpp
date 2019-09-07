@@ -316,7 +316,6 @@ int main(int argc, char* argv[])
 
         //checks that directory is empty
         std::string str = ls("./");
-        std::cout << "wtf '" << str << "'" << std::endl;
         if(str != ".. . " &&
            str != ". .. " &&
            str != ".git .. . " &&
