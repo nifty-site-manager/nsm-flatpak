@@ -4,6 +4,10 @@
     "runtime-version": "18.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "nsm",
+    "finish-args": [
+        "--filesystem=host",
+        "--share=network"
+    ],
     "modules": [
         {
             "name": "git",
