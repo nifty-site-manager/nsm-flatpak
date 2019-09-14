@@ -10,7 +10,7 @@
   <summary>Dynamic and static site generator</summary>
   <description>
     <p>
-       Nift (aka nsm) is a cross-platform open source git-like and LaTeX-like command-line dynamic and static site generator. 
+       Nift (aka nsm) is a cross-platform open source git-like and LaTeX-like command-line dynamic and static website generator. 
     </p>
   </description>
 
@@ -29,6 +29,7 @@
 
   <launchable type="desktop-id">cc.nift.nsm.desktop</launchable>
   <releases>
+	<release version="1.9" date="2019-09-14" />
 	<release version="1.8" date="2019-08-25" />
 	<release version="1.7" date="2019-08-23" />
 	<release version="1.6" date="2019-08-22" />
