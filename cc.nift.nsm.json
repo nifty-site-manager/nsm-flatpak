@@ -6,7 +6,8 @@
     "command": "nsm",
     "finish-args": [
         "--filesystem=host",
-        "--share=network"
+        "--share=network",
+        "--talk-name=org.freedesktop.Flatpak"
     ],
     "modules": [
         {
