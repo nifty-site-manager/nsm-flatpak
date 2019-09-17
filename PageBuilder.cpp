@@ -347,7 +347,7 @@ int PageBuilder::read_and_process(const Path &readPath, std::set<Path> antiDepsO
 
                     if(system(sys_call.c_str()))
                     {
-                        os << "error: " << readPath << ": line " << lineNo << ": @system(" << sys_call << ") failed" << std::endl;
+                        os << "error: " << readPath << ": line " << lineNo << ": @system(" << quote(sys_call) << ") failed" << std::endl;
                         return 1;
                     }
                 }
@@ -365,7 +365,7 @@ int PageBuilder::read_and_process(const Path &readPath, std::set<Path> antiDepsO
 
                     if(system((sys_call + " > @systemoutput").c_str()))
                     {
-                        os << "error: " << readPath << ": line " << lineNo << ": @systemoutput(" << sys_call << ") failed" << std::endl;
+                        os << "error: " << readPath << ": line " << lineNo << ": @systemoutput(" << quote(sys_call) << ") failed" << std::endl;
                         Path("./", "@systemoutput").removePath();
                         return 1;
                     }
