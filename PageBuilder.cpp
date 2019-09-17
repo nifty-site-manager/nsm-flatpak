@@ -369,7 +369,10 @@ int PageBuilder::read_and_process(const Path &readPath, std::set<Path> antiDepsO
                     if(std::ifstream("/.flatpak-info"))
                     {
                         //might need sys_call unquoted here for cURL to work
-                        if(system(("flatpak-spawn --host bash -c " + quote(sys_call) + " > @systemoutput").c_str()))
+                        //testing sys_call unquoted
+                        //if(system(("flatpak-spawn --host bash -c " + quote(sys_call) + " > @systemoutput").c_str()))
+                        std::cout << "yay?" << std::endl;
+                        if(system(("flatpak-spawn --host bash -c " + sys_call + " > @systemoutput").c_str()))
                         {
                             os << "error: " << readPath << ": line " << lineNo << ": @systemoutput(" << quote(sys_call) << ") failed" << std::endl;
                             Path("./", "@systemoutput").removePath();
