@@ -8,6 +8,9 @@ Copyright (c) 2015-present [Nicholas Ham](https://n-ham.com).
 
 This is an official (GitHub) repository for Nift, a cross-platform git-like and LaTeX-like command-line site manager.
 
+To build locally run:
+flatpak-builder --force-clean --install --user test cc.nift.nsm.json
+
 Website:
 \[[official](https://nift.cc)\] \[[bitbucket](https://nifty-site-manager.bitbucket.io)\] \[[github](https://nifty-site-manager.github.io)\] \[[gitlab](https://nifty-site-manager.gitlab.io)\] \[[Netlify](https://nifty-site-manager.netlify.com/)\]
 

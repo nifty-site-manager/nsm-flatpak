@@ -1,0 +1,45 @@
+{
+    "app-id": "cc.nift.nsm",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "19.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "nsm",
+    "finish-args": [
+        "--filesystem=host",
+        "--share=network",
+        "--talk-name=org.freedesktop.Flatpak"
+    ],
+    "modules": [
+        {
+            "name": "git",
+            "make-args": [
+                "NO_TCLTK=YesPlease",
+                "INSTALL_SYMLINKS=1"
+            ],
+            "make-install-args": [
+                "NO_TCLTK=YesPlease",
+                "INSTALL_SYMLINKS=1"
+            ],
+            "post-install": [
+                "find . -type f -name perllocal.pod -delete"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.kernel.org/pub/software/scm/git/git-2.22.0.tar.xz",
+                    "sha256": "159e4b599f8af4612e70b666600a3139541f8bacc18124daf2cbe8d1b934f29f"
+                }
+            ]
+        },
+        {
+            "name": "nsm",
+            "no-autogen": true,
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "./"
+                }
+            ]
+        }
+    ]
+}
