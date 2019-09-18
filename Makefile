@@ -10,7 +10,6 @@ datadir=share
 
 nsm: $(objects)
 	$(CC) $(CXXFLAGS) $(cppfiles) -o nsm $(LINK)
-	$(CC) $(CXXFLAGS) $(cppfiles) -o nift $(LINK)
 
 nsm.o: nsm.cpp SiteInfo.o Timer.h
 	$(CC) $(CXXFLAGS) -c -o $@ $< $(LINK)
@@ -44,7 +43,6 @@ Quoted.o: Quoted.cpp Quoted.h
 
 install:
 	install -D nsm /app/bin/nsm
-	install -D nsm /app/bin/nift
 	install -Dm644 cc.nift.nsm.appdata.xml $(prefix)/$(datadir)/appdata/cc.nift.nsm.appdata.xml
 	install -Dm644 cc.nift.nsm.desktop $(prefix)/$(datadir)/desktop/cc.nift.nsm.desktop
 	install -Dm644 cc.nift.nsm64.png $(prefix)/$(datadir)/icons/hicolor/64x64/apps/cc.nift.nsm.png
@@ -54,7 +52,6 @@ install:
 
 uninstall:
 	rm /app/bin/nsm
-	rm /app/bin/nift
 
 clean:
 	rm -f $(objects)
