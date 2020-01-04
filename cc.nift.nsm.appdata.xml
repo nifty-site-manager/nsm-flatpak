@@ -29,6 +29,7 @@
 
   <launchable type="desktop-id">cc.nift.nsm.desktop</launchable>
   <releases>
+    <release version="2.0.1" date="2020-01-04" />
     <release version="2.0" date="2020-01-03" />
     <release version="1.25" date="2019-12-19" />
     <release version="1.24" date="2019-12-11" />

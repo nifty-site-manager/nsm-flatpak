@@ -9,8 +9,8 @@ prefix=/app
 datadir=share
 
 nsm: $(objects)
-	$(CXX) $(CXXFLAGS) $(cppfiles) -o nsm $(LINK)
-	$(CXX) $(CXXFLAGS) $(cppfiles) -o nift $(LINK)
+	$(CXX) $(CXXFLAGS) $(objects) -o nsm $(LINK)
+	$(CXX) $(CXXFLAGS) $(objects) -o nift $(LINK)
 
 nsm.o: nsm.cpp GitInfo.o ProjectInfo.o Timer.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $< $(LINK)
