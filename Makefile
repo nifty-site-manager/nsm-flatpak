@@ -1,33 +1,59 @@
 #basic makefile for nsm-flatpak
-objects=nsm.o DateTimeInfo.o Directory.o Filename.o FileSystem.o GitInfo.o Parser.o Path.o ProjectInfo.o Quoted.o Title.o TrackedInfo.o WatchList.o
-cppfiles=nsm.cpp DateTimeInfo.cpp Directory.cpp Filename.cpp FileSystem.cpp GitInfo.cpp Parser.cpp Path.cpp ProjectInfo.cpp Quoted.cpp Title.cpp TrackedInfo.cpp WatchList.cpp
-CC=g++
-LINK=-pthread
-CXXFLAGS=-std=c++11 -Wall -Wextra -pedantic -O3
+objects=nsm.o ConsoleColor.o DateTimeInfo.o Directory.o Expr.o ExprtkFns.o Filename.o FileSystem.o Getline.o GitInfo.o LuaFns.o LuaJIT.o NumFns.o Parser.o Path.o ProjectInfo.o Quoted.o StrFns.o SystemInfo.o Title.o TrackedInfo.o Variables.o WatchList.o
+cppfiles=nsm.cpp ConsoleColor.cpp DateTimeInfo.cpp Directory.cpp Expr.cpp ExprtkFns.cpp Filename.cpp FileSystem.cpp Getline.cpp GitInfo.cpp LuaFns.cpp LuaJIT.cpp NumFns.cpp Parser.cpp Path.cpp ProjectInfo.cpp Quoted.cpp StrFns.cpp SystemInfo.cpp Title.cpp TrackedInfo.cpp Variables.cpp WatchList.cpp
+
+CXX?=g++
+CXXFLAGS=-std=c++11 -Wall -Wextra -pedantic -O3 -s
+LINK=-pthread -ldl -LLuaJIT/src -lluajit
 
 prefix=/app
 datadir=share
 
+###
+
+all: make-luajit nsm
+
+###
+
+make-luajit:
+	cd LuaJIT && make
+
+###
+
 nsm: $(objects)
 	$(CXX) $(CXXFLAGS) $(objects) -o nsm $(LINK)
-	$(CXX) $(CXXFLAGS) $(objects) -o nift $(LINK)
 
-nsm.o: nsm.cpp GitInfo.o ProjectInfo.o Timer.h
-	$(CXX) $(CXXFLAGS) -c -o $@ $< $(LINK)
-
-ProjectInfo.o: ProjectInfo.cpp ProjectInfo.h GitInfo.o Parser.o WatchList.o
-	$(CXX) $(CXXFLAGS) -c -o $@ $< $(LINK)
-
-GitInfo.o: GitInfo.cpp GitInfo.h FileSystem.o
+nsm.o: nsm.cpp GitInfo.o ProjectInfo.o
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-Parser.o: Parser.cpp Parser.h DateTimeInfo.o FileSystem.o TrackedInfo.o
+ProjectInfo.o: ProjectInfo.cpp ProjectInfo.h GitInfo.o Parser.o WatchList.o Timer.h
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+GitInfo.o: GitInfo.cpp GitInfo.h ConsoleColor.o FileSystem.o
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+Parser.o: Parser.cpp Parser.h DateTimeInfo.o Expr.o ExprtkFns.o FileSystem.o Getline.o LuaFns.o LuaJIT.o SystemInfo.o TrackedInfo.o Variables.o 
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 WatchList.o: WatchList.cpp WatchList.h FileSystem.o
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-FileSystem.o: FileSystem.cpp FileSystem.h Path.o
+ExprtkFns.o: ExprtkFns.cpp ExprtkFns.h Expr.o Variables.o Consts.h
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+Expr.o: Expr.cpp Expr.h exprtk/exprtk.h
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+Getline.o: Getline.cpp Getline.h ConsoleColor.o FileSystem.o StrFns.o Consts.h
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+FileSystem.o: FileSystem.cpp FileSystem.h Path.o SystemInfo.o
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+LuaFns.o: LuaFns.cpp LuaFns.h LuaJIT.o ConsoleColor.o Path.o Quoted.o Variables.o Consts.h
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+LuaJIT.o: LuaJIT.cpp LuaJIT.h StrFns.o LuaJIT/src/lua.hpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 DateTimeInfo.o: DateTimeInfo.cpp DateTimeInfo.h
@@ -36,7 +62,16 @@ DateTimeInfo.o: DateTimeInfo.cpp DateTimeInfo.h
 TrackedInfo.o: TrackedInfo.cpp TrackedInfo.h Path.o Title.o
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-Path.o: Path.cpp Path.h Directory.o Filename.o
+Variables.o: Variables.cpp Variables.h NumFns.o Path.o StrFns.o
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+NumFns.o: NumFns.cpp NumFns.h
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+Path.o: Path.cpp Path.h ConsoleColor.o Directory.o Filename.o SystemInfo.o
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+StrFns.o: StrFns.cpp StrFns.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 Directory.o: Directory.cpp Directory.h Quoted.h
@@ -45,14 +80,36 @@ Directory.o: Directory.cpp Directory.h Quoted.h
 Filename.o: Filename.cpp Filename.h Quoted.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-Title.o: Title.cpp Title.h Quoted.o
+SystemInfo.o: SystemInfo.cpp SystemInfo.h
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+Title.o: Title.cpp Title.h ConsoleColor.o Quoted.o
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+ConsoleColor.o: ConsoleColor.cpp ConsoleColor.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 Quoted.o: Quoted.cpp Quoted.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
+###
+
 install:
+	mkdir /app/include
+	install -D LuaJIT/src/lauxlib.h /app/include/lauxlib.h
+	install -D LuaJIT/src/lua.h /app/include/lua.h
+	install -D LuaJIT/src/lua.hpp /app/include/lua.hpp
+	install -D LuaJIT/src/luaconf.h /app/include/luaconf.h
+	install -D LuaJIT/src/lualib.h /app/include/lualib.h
+
+	install -D LuaJIT/src/luajit /app/bin/luajit
+
+	#install -D LuaJIT/src/libluajit.so /app/lib/libluajit.so
+	#install -D LuaJIT/src/libluajit.so /app/lib/libluajit-5.1.so
+	install -D LuaJIT/src/libluajit.so /app/lib/libluajit-5.1.so.2
+
 	install -D nsm /app/bin/nsm
+	
 	install -Dm644 cc.nift.nsm.appdata.xml $(prefix)/$(datadir)/appdata/cc.nift.nsm.appdata.xml
 	install -Dm644 cc.nift.nsm.desktop $(prefix)/$(datadir)/desktop/cc.nift.nsm.desktop
 	install -Dm644 cc.nift.nsm64.png $(prefix)/$(datadir)/icons/hicolor/64x64/apps/cc.nift.nsm.png
@@ -61,11 +118,31 @@ install:
 	install -Dm644 cc.nift.nsm512.png $(prefix)/$(datadir)/icons/hicolor/512x512/apps/cc.nift.nsm.png
 
 uninstall:
+	rm /app/include/lauxlib.h
+	rm /app/include/lua.h
+	rm /app/include/lua.hpp
+	rm /app/include/luaconf.h
+	rm /app/include/lualib.h
+
+	rm /app/bin/luajit
+
+	#rm /app/lib/libluajit.so
+	#rm /app/lib/libluajit-5.1.so
+	rm /app/lib/libluajit-5.1.so.2
+
 	rm /app/bin/nsm
 
+	rm $(prefix)/$(datadir)/appdata/cc.nift.nsm.appdata.xml
+	rm $(prefix)/$(datadir)/desktop/cc.nift.nsm.desktop
+	rm $(prefix)/$(datadir)/icons/hicolor/64x64/apps/cc.nift.nsm.png
+	rm $(prefix)/$(datadir)/icons/hicolor/128x128/apps/cc.nift.nsm.png
+	rm $(prefix)/$(datadir)/icons/hicolor/256x256/apps/cc.nift.nsm.png
+	rm $(prefix)/$(datadir)/icons/hicolor/512x512/apps/cc.nift.nsm.png
+
 clean:
-	rm -f $(objects)
+	rm -f $(objects) exprtk.o
+	cd LuaJIT && make clean
 
 clean-all:
-	rm -f $(objects) nsm
-
+	rm -f $(objects) exprtk.o nsm
+	cd LuaJIT && make clean
