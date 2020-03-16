@@ -364,7 +364,7 @@ int Parser::interactive(std::string& lang, std::ostream& eos)
     //creates anti-deps set
     std::set<Path> antiDepsOfReadPath;
 
-    std::cout << "Nift (aka nsm) " << c_gold << "v" << NSM_VERSION << c_white << " ©2015-" << DateTimeInfo().currentYYYY() << " (" << c_blue << "https://nift.cc" << c_white << ")" << std::endl;
+    std::cout << "Nift (aka nsm) " << c_gold << "v" << NSM_VERSION << c_white << " (c)2015-" << DateTimeInfo().currentYYYY() << " (" << c_blue << "https://nift.cc" << c_white << ")" << std::endl;
 
     int result = 1;
     while(1)
@@ -3254,7 +3254,7 @@ int Parser::read_and_process_fn(const bool& indent,
             }
 
             if(params.size() == 0)
-                params.push_back("");
+                params.push_back("./");
             else if(params.size() > 1) // do we want this?
             {
                 for(size_t p=0; p+1<params.size(); ++p)
