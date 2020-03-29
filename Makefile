@@ -9,6 +9,10 @@ LINK=-pthread -ldl -LLuaJIT/src -lluajit
 prefix=/app
 datadir=share
 
+BINDIR=${prefix}/bin
+INCDIR=${prefix}/include
+LIBDIR=${prefix}/lib
+
 ###
 
 all: make-luajit nsm
@@ -96,19 +100,19 @@ Quoted.o: Quoted.cpp Quoted.h
 
 install:
 	mkdir /app/include
-	install -D LuaJIT/src/lauxlib.h /app/include/lauxlib.h
-	install -D LuaJIT/src/lua.h /app/include/lua.h
-	install -D LuaJIT/src/lua.hpp /app/include/lua.hpp
-	install -D LuaJIT/src/luaconf.h /app/include/luaconf.h
-	install -D LuaJIT/src/lualib.h /app/include/lualib.h
+	install -D LuaJIT/src/lauxlib.h ${INCDIR}/lauxlib.h
+	install -D LuaJIT/src/lua.h ${INCDIR}/lua.h
+	install -D LuaJIT/src/lua.hpp ${INCDIR}/lua.hpp
+	install -D LuaJIT/src/luaconf.h ${INCDIR}/luaconf.h
+	install -D LuaJIT/src/lualib.h ${INCDIR}/lualib.h
 
-	install -D LuaJIT/src/luajit /app/bin/luajit
+	install -D LuaJIT/src/luajit ${BINDIR}/luajit
 
-	#install -D LuaJIT/src/libluajit.so /app/lib/libluajit.so
-	#install -D LuaJIT/src/libluajit.so /app/lib/libluajit-5.1.so
-	install -D LuaJIT/src/libluajit.so /app/lib/libluajit-5.1.so.2
+	#install -D LuaJIT/src/libluajit.so ${LIBDIR}/libluajit.so
+	#install -D LuaJIT/src/libluajit.so ${LIBDIR}/libluajit-5.1.so
+	install -D LuaJIT/src/libluajit.so ${LIBDIR}/libluajit-5.1.so.2
 
-	install -D nsm /app/bin/nsm
+	install -D nsm ${BINDIR}/nsm
 	
 	install -Dm644 cc.nift.nsm.appdata.xml $(prefix)/$(datadir)/appdata/cc.nift.nsm.appdata.xml
 	install -Dm644 cc.nift.nsm.desktop $(prefix)/$(datadir)/desktop/cc.nift.nsm.desktop
@@ -118,19 +122,19 @@ install:
 	install -Dm644 cc.nift.nsm512.png $(prefix)/$(datadir)/icons/hicolor/512x512/apps/cc.nift.nsm.png
 
 uninstall:
-	rm /app/include/lauxlib.h
-	rm /app/include/lua.h
-	rm /app/include/lua.hpp
-	rm /app/include/luaconf.h
-	rm /app/include/lualib.h
+	rm ${INCDIR}/lauxlib.h
+	rm ${INCDIR}/lua.h
+	rm ${INCDIR}/lua.hpp
+	rm ${INCDIR}/luaconf.h
+	rm ${INCDIR}/lualib.h
 
-	rm /app/bin/luajit
+	rm ${BINDIR}/luajit
 
-	#rm /app/lib/libluajit.so
-	#rm /app/lib/libluajit-5.1.so
-	rm /app/lib/libluajit-5.1.so.2
+	#rm ${LIBDIR}/libluajit.so
+	#rm ${LIBDIR}/libluajit-5.1.so
+	rm ${LIBDIR}/libluajit-5.1.so.2
 
-	rm /app/bin/nsm
+	rm ${BINDIR}/nsm
 
 	rm $(prefix)/$(datadir)/appdata/cc.nift.nsm.appdata.xml
 	rm $(prefix)/$(datadir)/desktop/cc.nift.nsm.desktop

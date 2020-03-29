@@ -10,7 +10,7 @@ int create_default_html_template(const Path& templatePath)
     ofs << "\t\t@input(\"" <<  templatePath.dir << "head.content\")" << std::endl;
     ofs << "\t</head>" << std::endl << std::endl;
     ofs << "\t<body>" << std::endl;
-    ofs << "\t\t@content()" << std::endl;
+    ofs << "\t\t@content" << std::endl;
     ofs << "\t</body>" << std::endl;
     ofs << "</html>" << std::endl << std::endl;
     ofs.close();
@@ -27,7 +27,7 @@ int create_blank_template(const Path& templatePath)
     templatePath.ensureDirExists();
 
     std::ofstream ofs(templatePath.str());
-    ofs << "@content()" << std::endl;
+    ofs << "@content" << std::endl;
     ofs.close();
 
     return 0;
@@ -4071,11 +4071,11 @@ int ProjectInfo::build_updated(std::ostream& os, const bool& addBuildStatus, con
         nextInfo = updatedInfo.begin();
         counter = noFinished = 0;
 
-        os_mtx.lock();
+        //os_mtx.lock();
         if(addBuildStatus)
             clear_console_line();
         os << "building updated files.." << std::endl;
-        os_mtx.unlock();
+        //os_mtx.unlock();
 
         if(addBuildStatus)
             timer.start();
