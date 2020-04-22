@@ -9,6 +9,7 @@
         "--share=network",
         "--talk-name=org.freedesktop.Flatpak"
     ],
+    "skip-icons-check": false,
     "modules": [
         {
             "name": "git",

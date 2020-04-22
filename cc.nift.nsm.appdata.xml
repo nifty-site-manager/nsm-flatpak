@@ -27,6 +27,9 @@
   <developer_name>Nick Ham</developer_name>
   <update_contact>contact_at_n-ham.com</update_contact>
 
+  <icon height="128" width="128">$APPID.png</icon>
+  <icon height="64" width="64">$APPID.png</icon>
+
   <launchable type="desktop-id">cc.nift.nsm.desktop</launchable>
   <releases>
   	<release version="2.3.4" date="2020-04-19" />
