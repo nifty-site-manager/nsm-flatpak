@@ -1,10 +1,10 @@
 #basic makefile for nsm-flatpak
-objects=nsm.o ConsoleColor.o DateTimeInfo.o Directory.o Expr.o ExprtkFns.o Filename.o FileSystem.o Getline.o GitInfo.o HashTk.o Lolcat.o LuaFns.o LuaJIT.o NumFns.o Pagination.o Parser.o Path.o ProjectInfo.o Quoted.o StrFns.o SystemInfo.o Title.o TrackedInfo.o Variables.o WatchList.o
-cppfiles=nsm.cpp ConsoleColor.cpp DateTimeInfo.cpp Directory.cpp Expr.cpp ExprtkFns.cpp Filename.cpp FileSystem.cpp Getline.cpp GitInfo.cpp hashtk/HashTk.cpp Lolcat.cpp LuaFns.cpp LuaJIT.cpp NumFns.cpp Pagination.cpp Parser.cpp Path.cpp ProjectInfo.cpp Quoted.cpp StrFns.cpp SystemInfo.cpp Title.cpp TrackedInfo.cpp Variables.cpp WatchList.cpp
+objects=nsm.o ConsoleColor.o DateTimeInfo.o Directory.o Expr.o ExprtkFns.o Filename.o FileSystem.o Getline.o GitInfo.o HashTk.o Lolcat.o LuaFns.o Lua.o NumFns.o Pagination.o Parser.o Path.o ProjectInfo.o Quoted.o StrFns.o SystemInfo.o Title.o TrackedInfo.o Variables.o WatchList.o
+cppfiles=nsm.cpp ConsoleColor.cpp DateTimeInfo.cpp Directory.cpp Expr.cpp ExprtkFns.cpp Filename.cpp FileSystem.cpp Getline.cpp GitInfo.cpp hashtk/HashTk.cpp Lolcat.cpp LuaFns.cpp Lua.cpp NumFns.cpp Pagination.cpp Parser.cpp Path.cpp ProjectInfo.cpp Quoted.cpp StrFns.cpp SystemInfo.cpp Title.cpp TrackedInfo.cpp Variables.cpp WatchList.cpp
 
 CXX?=g++
 CXXFLAGS=-std=c++11 -Wall -Wextra -pedantic -O3 -s
-LINK=-pthread -ldl -LLuaJIT/src -lluajit
+LINK=-pthread ./LuaJIT/src/libluajit.a -ldl
 
 prefix=/app
 datadir=share
@@ -41,7 +41,7 @@ ProjectInfo.o: ProjectInfo.cpp ProjectInfo.h GitInfo.o Parser.o WatchList.o Time
 GitInfo.o: GitInfo.cpp GitInfo.h ConsoleColor.o FileSystem.o
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-Parser.o: Parser.cpp Parser.h DateTimeInfo.o Expr.o ExprtkFns.o Getline.o HashTk.o LuaFns.o LuaJIT.o Pagination.o SystemInfo.o TrackedInfo.o Variables.o 
+Parser.o: Parser.cpp Parser.h DateTimeInfo.o Expr.o ExprtkFns.o Getline.o HashTk.o LuaFns.o Lua.o Pagination.o SystemInfo.o TrackedInfo.o Variables.o 
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 WatchList.o: WatchList.cpp WatchList.h FileSystem.o
@@ -53,10 +53,10 @@ Getline.o: Getline.cpp Getline.h ConsoleColor.o FileSystem.o Lolcat.o StrFns.o C
 Lolcat.o: Lolcat.cpp Lolcat.h FileSystem.o
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-LuaFns.o: LuaFns.cpp LuaFns.h LuaJIT.o ConsoleColor.o ExprtkFns.o FileSystem.o Path.o Quoted.o Variables.o Consts.h
+LuaFns.o: LuaFns.cpp LuaFns.h Lua.o ConsoleColor.o ExprtkFns.o FileSystem.o Path.o Quoted.o Variables.o Consts.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-LuaJIT.o: LuaJIT.cpp LuaJIT.h StrFns.o LuaJIT/src/lua.hpp
+Lua.o: Lua.cpp Lua.h StrFns.o LuaJIT/src/lua.hpp Lua-5.3/src/lua.hpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 ExprtkFns.o: ExprtkFns.cpp ExprtkFns.h Expr.o FileSystem.o Quoted.o Variables.o Consts.h
@@ -119,10 +119,6 @@ install:
 
 	install -D LuaJIT/src/luajit ${BINDIR}/luajit
 
-	#install -D LuaJIT/src/libluajit.so ${LIBDIR}/libluajit.so
-	#install -D LuaJIT/src/libluajit.so ${LIBDIR}/libluajit-5.1.so
-	install -D LuaJIT/src/libluajit.so ${LIBDIR}/libluajit-5.1.so.2
-
 	install -D nsm ${BINDIR}/nsm
 	
 	install -Dm644 cc.nift.nsm.appdata.xml $(prefix)/$(datadir)/appdata/cc.nift.nsm.appdata.xml
@@ -140,10 +136,6 @@ uninstall:
 	rm ${INCDIR}/lualib.h
 
 	rm ${BINDIR}/luajit
-
-	#rm ${LIBDIR}/libluajit.so
-	#rm ${LIBDIR}/libluajit-5.1.so
-	rm ${LIBDIR}/libluajit-5.1.so.2
 
 	rm ${BINDIR}/nsm
 
