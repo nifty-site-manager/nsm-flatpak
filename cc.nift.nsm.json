@@ -33,7 +33,6 @@
         },
         {
             "name": "nsm",
-            "skip-icons-check": true,
             "no-autogen": true,
             "sources": [
                 {
