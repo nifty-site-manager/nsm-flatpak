@@ -20,9 +20,9 @@
     </screenshot>
   </screenshots>
 
-  <url type="homepage">https://nift.cc</url>
+  <url type="homepage">https://nift.dev</url>
   <url type="bugtracker">https://github.com/nifty-site-manager/nsm-flatpak/issues</url>
-  <url type="donation">https://nift.cc/support.html</url>
+  <url type="donation">https://nift.dev/support.html</url>
 
   <developer_name>Nick Ham</developer_name>
   <update_contact>contact_at_n-ham.com</update_contact>
@@ -32,7 +32,8 @@
 
   <launchable type="desktop-id">cc.nift.nsm.desktop</launchable>
   <releases>
-  	<release version="2.3.7" date="2020-04-30" />
+  	<release version="2.3.8" date="2020-05-06" />
+    <release version="2.3.7" date="2020-04-30" />
     <release version="2.3.6" date="2020-04-26" />
     <release version="2.3.5" date="2020-04-24" />
     <release version="2.3.4" date="2020-04-19" />
