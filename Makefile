@@ -4,7 +4,7 @@ cppfiles=nsm.cpp ConsoleColor.cpp DateTimeInfo.cpp Directory.cpp Expr.cpp Exprtk
 
 CXX?=g++
 CXXFLAGS=-D__BUNDLED__ -std=c++11 -Wall -Wextra -pedantic -O3 -s -Dexprtk_disable_caseinsensitivity
-LINK=-pthread ./LuaJIT/src/libluajit.a -ldl
+LDFLAGS=-pthread ./LuaJIT/src/libluajit.a -ldl
 
 prefix=/app
 datadir=share
@@ -30,7 +30,7 @@ HashTk.o: hashtk/HashTk.cpp hashtk/HashTk.h
 ###
 
 nsm: $(objects)
-	$(CXX) $(CXXFLAGS) $(objects) -o nsm $(LINK)
+	$(CXX) $(CXXFLAGS) $(objects) -o nsm $(LDFLAGS)
 
 nsm.o: nsm.cpp GitInfo.o ProjectInfo.o
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
