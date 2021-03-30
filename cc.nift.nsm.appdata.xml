@@ -32,7 +32,8 @@
 
   <launchable type="desktop-id">cc.nift.nsm.desktop</launchable>
   <releases>
-  	<release version="2.4.6" date="2021-03-29" />
+  	<release version="2.4.7" date="2021-03-30" />
+    <release version="2.4.6" date="2021-03-29" />
     <release version="2.4.5" date="2021-03-27" />
     <release version="2.4.4" date="2021-03-25" />
     <release version="2.4.3" date="2021-03-24" />
