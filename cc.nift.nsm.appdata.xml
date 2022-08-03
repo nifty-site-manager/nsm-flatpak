@@ -27,10 +27,15 @@
   <developer_name>Nick Ham</developer_name>
   <update_contact>contact_at_n-ham.com</update_contact>
 
-  <icon height="128" width="128">$APPID.png</icon>
-  <icon height="64" width="64">$APPID.png</icon>
+  <icon type="stock" height="128" width="128">$APPID</icon>
+  <icon type="stock" height="64" width="64">$APPID</icon>
 
   <launchable type="desktop-id">cc.nift.nsm.desktop</launchable>
+
+  <provides>
+    <binary>nift</binary>
+  </provides>
+
   <releases>
   	<release version="2.4.12" date="2021-04-11" />
     <release version="2.4.11" date="2021-04-09" />
